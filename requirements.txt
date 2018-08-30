@@ -17,4 +17,4 @@ tqdm==4.25.0
 Unidecode==1.0.22
 urllib3==1.22
 Werkzeug==0.14.1
-gunicorn==18.0
+gunicorn==19.5.0
