@@ -8,25 +8,24 @@ import hashlib
 from flask import Flask, request, Response
 from flask_cors import CORS
 
-raiz = os.path.dirname(os.path.abspath(__file__))
-FILE = "/data.json"
+FILE = "data.json"
 hash_competicao = ""
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 def atualizar_file(data):
-    with open(raiz + FILE, 'w') as f:
+    with open(FILE, 'w') as f:
         json.dump(data, f, sort_keys=True, indent=4)
 
 def carregar_file():
-    if(os.path.exists(raiz + FILE)):
-        return json.load(open(raiz + FILE, 'r'))
+    if(os.path.exists(FILE)):
+        return json.load(open(FILE, 'r'))
 
 def checa_hash_comp():
     global hash_competicao
     hasher = hashlib.md5()
-    with open(raiz + FILE, 'rb') as afile:
+    with open(FILE, 'rb') as afile:
         buf = afile.read()
         hasher.update(buf)
     if hasher.hexdigest() != hash_competicao:
