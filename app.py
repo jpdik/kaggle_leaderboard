@@ -53,9 +53,7 @@ def ver_competicao():
 
     atualizar_file(data)
     news = checa_hash_comp()
-    if news == True:
         return json.dumps({"news": news, "data": carregar_file()}), 200
-    return json.dumps({"news": news}), 200
 
 if __name__ == '__main__':
     app.run(debug=True)
